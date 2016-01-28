@@ -1,0 +1,1 @@
+[{'word': 'RDEPENDS_', 'menu': '[B] packagegroup-co', 'kind': '', 'abbr': 'RDEPENDS_'}, {'word': '_append_genericx86', 'menu': '[B] packagegroup-co', 'kind': '', 'abbr': '_append_genericx86'}, {'word': 'lttng', 'menu': '[B] packagegroup-co', 'kind': '', 'abbr': 'lttng'}, {'word': 'systemtap', 'menu': '[B] packagegroup-co', 'kind': '', 'abbr': 'systemtap'}]

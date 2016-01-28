@@ -1,0 +1,1 @@
+[{'word': 'do_install_append', 'menu': '[B] less_git.bbappe', 'kind': '', 'abbr': 'do_install_append'}, {'word': 'bindir', 'menu': '[B] less_git.bbappe', 'kind': '', 'abbr': 'bindir'}, {'word': 'less', 'menu': '[B] less_git.bbappe', 'kind': '', 'abbr': 'less'}, {'word': 'pager', 'menu': '[B] less_git.bbappe', 'kind': '', 'abbr': 'pager'}]

@@ -1,0 +1,1 @@
+[{'word': 'EXTRA_OECONF_BASE', 'menu': '[B] gcc_git.bbappen', 'kind': '', 'abbr': 'EXTRA_OECONF_BASE'}, {'word': 'disable', 'menu': '[B] gcc_git.bbappen', 'kind': '', 'abbr': 'disable'}, {'word': 'libstdcxx', 'menu': '[B] gcc_git.bbappen', 'kind': '', 'abbr': 'libstdcxx'}]

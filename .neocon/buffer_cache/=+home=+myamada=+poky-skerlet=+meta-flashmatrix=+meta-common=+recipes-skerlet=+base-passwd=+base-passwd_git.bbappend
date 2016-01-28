@@ -1,0 +1,1 @@
+[{'word': 'pkg_postinst_', 'menu': '[B] base-passwd_git', 'kind': '', 'abbr': 'pkg_postinst_'}, {'word': 'exit', 'menu': '[B] base-passwd_git', 'kind': '', 'abbr': 'exit'}, {'word': 'base_passwd_sstate_postinst', 'menu': '[B] base-passwd_git', 'kind': '', 'abbr': 'base_passwd_sstate_postinst'}]

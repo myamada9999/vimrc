@@ -1,0 +1,1 @@
+[{'word': 'install', 'menu': '[B] Makefile', 'kind': '', 'abbr': 'install'}, {'word': 'clean', 'menu': '[B] Makefile', 'kind': '', 'abbr': 'clean'}, {'word': 'distclean', 'menu': '[B] Makefile', 'kind': '', 'abbr': 'distclean'}, {'word': 'MAKE', 'menu': '[B] Makefile', 'kind': '', 'abbr': 'MAKE'}]

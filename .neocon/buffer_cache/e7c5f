@@ -1,0 +1,1 @@
+[{'word': 'toolchain', 'menu': '[B] packagegroup-co', 'kind': '', 'abbr': 'toolchain'}, {'word': 'packages', 'menu': '[B] packagegroup-co', 'kind': '', 'abbr': 'packages'}, {'word': 'RDEPENDS_', 'menu': '[B] packagegroup-co', 'kind': '', 'abbr': 'RDEPENDS_'}, {'word': 'libxslt', 'menu': '[B] packagegroup-co', 'kind': '', 'abbr': 'libxslt'}]

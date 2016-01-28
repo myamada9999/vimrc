@@ -1,0 +1,1 @@
+[{'word': 'Disable', 'menu': '[B] heimdal_git.bba', 'kind': '', 'abbr': 'Disable'}, {'word': 'EXTRA_OECONF', 'menu': '[B] heimdal_git.bba', 'kind': '', 'abbr': 'EXTRA_OECONF'}, {'word': 'without', 'menu': '[B] heimdal_git.bba', 'kind': '', 'abbr': 'without'}]

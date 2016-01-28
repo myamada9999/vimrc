@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/myamada/poky/build-3.14/tmp/work/i586-poky-linux/sysvinit/2.88dsf-r14/sysvinit-2.88dsf-b/src'
+let g:netrw_dirhist_2='/home/myamada/meta-debian-jethro/poky/meta-flashmatrix/meta-common/recipes-debian/sysvinit'
+let g:netrw_dirhist_3='/home/myamada/meta-debian-jethro/poky/meta/recipes-core/sysvinit/sysvinit-inittab'
+let g:netrw_dirhist_4='/home/myamada/meta-debian-jethro/poky/meta-flashmatrix'
+let g:netrw_dirhist_5='/home/myamada/meta-debian-jethro/poky'
+let g:netrw_dirhist_6='/home/myamada/meta-debian-jethro/poky/meta/recipes-core/sysvinit/sysvinit-2.88dsf'

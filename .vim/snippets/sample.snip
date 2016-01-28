@@ -1,0 +1,7 @@
+snippet 	batc
+abbr		BOOST_AUTO_TEST_CASE
+prev_word	'^'
+	BOOST_AUTO_TEST_CASE(${1:TestName})
+	{
+		BOOST_FAIL("Fail");
+	}

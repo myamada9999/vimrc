@@ -1,0 +1,1 @@
+[{'word': 'debug', 'menu': '[B] core-image-base', 'kind': '', 'abbr': 'debug'}, {'word': 'package', 'menu': '[B] core-image-base', 'kind': '', 'abbr': 'package'}, {'word': 'EXTRA_IMAGE_FEATURES', 'menu': '[B] core-image-base', 'kind': '', 'abbr': 'EXTRA_IMAGE_FEATURES'}, {'word': 'pkgs', 'menu': '[B] core-image-base', 'kind': '', 'abbr': 'pkgs'}]

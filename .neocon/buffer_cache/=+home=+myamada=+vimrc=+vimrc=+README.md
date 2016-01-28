@@ -1,0 +1,1 @@
+[{'word': 'vimrc', 'menu': '[B] README.md', 'kind': '', 'abbr': 'vimrc'}, {'word': 'Personal', 'menu': '[B] README.md', 'kind': '', 'abbr': 'Personal'}, {'word': 'configuration', 'menu': '[B] README.md', 'kind': '', 'abbr': 'configuration'}]
