@@ -1,0 +1,112 @@
+
+●変換キー・無変換キーのマッピング（Windows）
+
+参考：
+ http://www.autohotkey.com/
+ http://ahk.xrea.jp/remap.html
+ http://pheromone.hatenablog.com/entry/20130603/1370276768
+ http://autohotkey.blog.fc2.com/blog-entry-1.html
+
+・目的
+
+以下のマッピング
+
+ 無変換→IME－オン／オフ
+ 変換→ESC
+
+ a::b
+
+でaに対してbをマッピング可能
+
+以下の二行を追加
+
+ vk1Dsc07B::Send,{Blind}{sc029}      ;無変換単独 = 全角/半角キー
+ vk1Dsc07B+j::Send,^j                ;無変換単独+j = Ctr+j
+ vk1Csc079::Send,{Blind}{Esc}        ;変換単独 = Escape
+
+AutoHotkeyをスタートアップに入れておく．
+
+
+●ボタン一発でPCシャットダウン
+
+ Insert & s::Shutdown,1              ;Insert+s = シャットダウン
+ Insert & l::Shutdown,0              ;Insert+l = ログオフ
+ Insert & r::Shutdown,2              ;Insert+r = リブート
+
+
+●ウィンドウキーによく使うアプリの起動割り当て
+
+ ; Winキー＋αにプロセス起動の割り当て
+ ; すでに起動済みの場合はウィンドウを前面にする．
+ RunProcess(x){
+     if(x = "f"){    			; firefoxの起動
+         Process,Exist,firefox.exe
+         if ErrorLevel<>0
+             WinActivate,ahk_pid %ErrorLevel%
+         else
+             Run,C:\Program Files\Mozilla Firefox\firefox.exe
+     }else if(x = "t"){			; thunderbirdの起動
+         Process,Exist,thunderbird.exe
+         if ErrorLevel<>0
+             WinActivate,ahk_pid %ErrorLevel%
+         else
+             Run,C:\Program Files\Mozilla Thunderbird\thunderbird.exe
+     }else if(x = "i"){			; IEの起動
+         Process,Exist,iexplore.exe
+         if ErrorLevel<>0
+             WinActivate,ahk_pid %ErrorLevel%
+         else
+             Run,"C:\Program Files\Internet Explorer\iexplore.exe"
+     }else if(x = "p"){			; puppyの起動
+         Process,Exist,putty.exe
+         if ErrorLevel<>0
+             WinActivate,ahk_pid %ErrorLevel%
+         else
+             Run,"C:\Program Files\Putty\putty.exe"
+     }else if(x = "w"){			; WinSCPの起動
+         Process,Exist,WinSCP.exe
+         if ErrorLevel<>0
+             WinActivate,ahk_pid %ErrorLevel%
+         else
+             Run,"C:\Program Files\WinSCP\WinSCP.exe"
+     }else if(x = "v"){			; VMWareの起動
+         Process,Exist,vmplayer.exe
+         if ErrorLevel<>0
+             WinActivate,ahk_pid %ErrorLevel%
+         else
+             Run,"C:\Program Files\VMware\VMware Player\vmplayer.exe"
+     }else if(x = "g"){			; Gvimの起動
+         Process,Exist,gvim.exe
+         if ErrorLevel<>0
+             WinActivate,ahk_pid %ErrorLevel%
+         else
+             Run,"C:\Program Files\vim74-kaoriya-win32\gvim.exe"
+     }else if(x = "q"){			; ウィンドウを閉じる
+         Send,!{F4}
+     }
+ }
+
+ ; ウィンドウを閉じる Win+qでAlt+F4
+ #q::RunProcess("q")
+ 
+ ; Win+Fにfirefoxの起動
+ #f::RunProcess("f")
+ 
+ ; Win+TにThunderbirdの起動
+ #t::RunProcess("t")
+ 
+ ; Win+iにIEの起動
+ #i::RunProcess("i")
+ 
+ ; Win+pにpuppyの起動
+ #p::RunProcess("p")
+ 
+ ; Win+wにWinSCPの起動
+ #w::RunProcess("w")
+ 
+ ; Win+vにVMwarePlayerの起動
+ #v::RunProcess("v")
+ 
+ ; Win+vにGvimの起動
+ #g::RunProcess("g")
+

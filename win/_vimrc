@@ -1,0 +1,194 @@
+
+"=====================================================================
+" 基本設定
+"=====================================================================
+set autoindent
+set number
+set showmatch
+set background=light
+set shiftwidth=4
+set backspace=indent,eol,start
+syntax on
+set tags=./tags
+set scrolloff=999
+set laststatus=2
+set showcmd
+set tabstop=4
+set clipboard=unnamed,autoselect
+
+" 「日本語入力固定モード」の動作モード
+let IM_CtrlMode = 4
+" 「日本語入力固定モード」切替キー
+inoremap <silent> <C-j> <C-^><C-r>=IMState('FixMode')<CR>
+
+" Remember things between sessions
+"  '20  - remember marks for 20 previous files
+"  \"50 - save 50 lines for each register
+"  :20  - remember 20 items in command-line history
+"  %    - remember the buffer list (if vim started without a file arg)
+"  n    - set name of viminfo file
+set viminfo='20,\"200,:20,%,n~/.viminfo 
+
+
+"=====================================================================
+" 文字コードの自動認識
+"=====================================================================
+if &encoding !=# 'utf-8'
+  set encoding=japan
+  set fileencoding=japan
+endif
+if has('iconv')
+  let s:enc_euc = 'euc-jp'
+  let s:enc_jis = 'iso-2022-jp'
+  " iconvがeucJP-msに対応しているかをチェック
+  if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
+    let s:enc_euc = 'eucjp-ms'
+    let s:enc_jis = 'iso-2022-jp-3'
+  " iconvがJISX0213に対応しているかをチェック
+  elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
+    let s:enc_euc = 'euc-jisx0213'
+    let s:enc_jis = 'iso-2022-jp-3'
+  endif
+  " fileencodingsを構築
+  if &encoding ==# 'utf-8'
+    let s:fileencodings_default = &fileencodings
+    let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
+    let &fileencodings = &fileencodings .','. s:fileencodings_default
+    unlet s:fileencodings_default
+  else
+    let &fileencodings = &fileencodings .','. s:enc_jis
+    set fileencodings+=utf-8,ucs-2le,ucs-2
+    if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
+      set fileencodings+=cp932
+      set fileencodings-=euc-jp
+      set fileencodings-=euc-jisx0213
+      set fileencodings-=eucjp-ms
+      let &encoding = s:enc_euc
+      let &fileencoding = s:enc_euc
+    else
+      let &fileencodings = &fileencodings .','. s:enc_euc
+    endif
+  endif
+  " 定数を処分
+  unlet s:enc_euc
+  unlet s:enc_jis
+endif
+
+
+"=====================================================================
+" 日本語を含まない場合は fileencoding に encoding を使うようにする
+"=====================================================================
+if has('autocmd')
+  function! AU_ReCheck_FENC()
+    if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
+      let &fileencoding=&encoding
+    endif
+  endfunction
+  autocmd BufReadPost * call AU_ReCheck_FENC()
+endif
+
+
+"=====================================================================
+" 改行コードの自動認識
+"=====================================================================
+set fileformats=unix,dos,mac
+
+
+"=====================================================================
+" □とか○の文字があってもカーソル位置がずれないようにする
+"=====================================================================
+" if exists('&ambiwidth')
+"   set ambiwidth=double
+" endif
+
+
+"=====================================================================
+" ステータスラインの表示
+"=====================================================================
+" set statusline=[%n]\ %t\ %y%{GetStatusEx()}\ %m%h%r=%l/%L,%c%V\ %P
+set statusline=[%n]\ %t\ %y%{GetStatusEx()}\ %m%h%r=%l/%L,%c%V
+function! GetStatusEx()
+	let str = &fileformat
+	if has("multi_byte") && &fileencoding != ""
+		let str = &fileencoding . ":" . str
+	endif
+	let str = "[" . str . "]"
+	return str
+endfunction
+" 「日本語入力固定モード」がオンの場合、ステータス行にメッセージ表示
+set statusline+=\ %{IMStatus('[日本語固定]')}
+
+
+"=====================================================================
+" キーマップ
+"=====================================================================
+" 一行の文字数（全角）
+let JpCountChars = 35
+" 一ページの行数
+" let JpCountLines = 500 
+" タブ記号をハイライト
+set list
+set listchars=tab:^\ ,trail:~
+" キーマップ
+noremap <silent> gl :JpFormat<CR>
+" 日本語の行の連結時には空白を入力しない。
+set formatoptions+=mM
+" 現在行を整形
+nnoremap <silent> gl :JpFormat<CR>
+vnoremap <silent> gl :JpFormat<CR>
+" 連結マーカを削除
+nnoremap <silent> gr :JpFormatAll!<CR>
+vnoremap <silent> gr :JpFormatAll!<CR>
+" 現在行が整形対象外でも強制的に整形
+nnoremap <silent> gL :JpFormat!<CR>
+vnoremap <silent> gL :JpFormat!<CR>
+" 自動整形のON/OFF切替
+" 30gC の様にカウント指定すると、現バッファのみ折り返し文字数を指定さ
+" れたカウントに変更します。
+nnoremap <silent> gC :JpFormatToggle<CR>
+" カーソル位置の分割行をまとめてヤンク
+nnoremap <silent> gY :JpYank<CR>
+vnoremap <silent> gY :JpYank<CR>
+" カーソル位置の分割行をまとめて連結
+nnoremap <silent> gJ :JpJoin<CR>
+vnoremap <silent> gJ :JpJoin<CR>
+" 外部ビューアを起動する
+nnoremap <silent> <F8> :JpExtViewer<CR>
+
+
+"=====================================================================
+" Gvim固有の設定
+"=====================================================================
+if has("gui_running")
+ set showtabline=2
+endif
+set nobackup
+set noswapfile
+
+
+"=====================================================================
+" vim-pathogen設定
+"=====================================================================
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
+
+"=====================================================================
+" neocomplchache on/off
+"=====================================================================
+" source ~/_vimrc.neocomplcache
+
+
+"=====================================================================
+" platexショートカット
+"=====================================================================
+nnoremap <silent> pl :C:\w32tex\bin\platex.exe %<CR>
+vnoremap <silent> pd :C:\w32tex\bin\platex.exe paper.dvi<CR>
+
+
+"=====================================================================
+" tab移動のショートカット
+"=====================================================================
+nnoremap <silent> <C-n> :tabn<CR>
+nnoremap <silent> <C-p> :tabp<CR>
+

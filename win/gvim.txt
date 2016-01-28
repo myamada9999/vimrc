@@ -1,0 +1,250 @@
+
+●ファイルすべてを共通のgvimのタブとして開く
+
+レジストリ(/HKEY_CLASSES_ROOT/Applications/gvim.exe/shell/open/command)
+の値を以下で修正。
+	
+"$VIM\vim\gvim.exe" --remote-tab-silent "%1"
+
+※「$VIM」はgvimのあるところ。
+
+vimrcに
+ set showtabline=2
+を追加する。
+
+・タブ操作系コマンド一覧表
+
+ :tabnew 		新しいタブページを開く
+ :tabn[ext] / gt 	次のタブページに移動
+ :tabp[revious] / gT 	前のタブページに移動
+ :tabc[lose] 		現在編集しているタブページを閉じる
+ :tabfir[st] 		先頭のタブページに移動
+ :tabl[ast] 		最後のタブページに移動
+ :tabd[o] 		カレントウィンドウのすべてのタブページでコマンド実行
+
+
+●印刷
+
+:hardcopy
+
+
+●ラインを引く
+
+一行文のラインを引く方法．
+
+ 70i
+ =
+ ESC
+
+
+●変換キー・無変換キーのマッピング（Linux）
+
+・keycodeの確認
+
+ $ xev
+
+変換キー，無変換キーを押してkeycodeを調べる．
+
+ 変換キー = 100
+ 無変換キー = 102
+
+
+
+●変換キー・無変換キーのマッピング（Windows）
+
+参考：
+ http://www.autohotkey.com/
+ http://ahk.xrea.jp/remap.html
+ http://pheromone.hatenablog.com/entry/20130603/1370276768
+ http://autohotkey.blog.fc2.com/blog-entry-1.html
+
+・目的
+
+以下のマッピング
+
+ 無変換→IME－オン／オフ
+ 変換→ESC
+
+ a::b
+
+でaに対してbをマッピング可能
+
+以下の二行を追加
+
+ vk1Dsc07B::Send,{Blind}{sc029}      ;無変換単独 = 全角/半角キー
+ vk1Csc079::Send,{Blind}{Esc}        ;変換単独 = Escape
+
+AutoHotkeyをスタートアップに入れておく．
+
+日本語固定モードもCtr+jだと不便なので無変換（全角／半角キー）＋jで変換
+できるように修正したほうがいいかも．
+
+ vk1Dsc07B+j::Send,^j                ;無変換単独+j = Ctr+j
+
+
+●CPU負荷
+
+neocomplcacheをONにしておくとCPU負荷が15%以上かかり，ファンが回り始め
+るため，.vimrc.neocomplcacheファイルを作成し，.vimrcから読み込むように
+設定し，ふだんはOFFにしておく．
+
+ " enable neocomplchace
+ source .vimrc.neocomplcache
+
+
+●クリップボードコピー
+
+vimrcに設定する
+
+ set clipboard=unnamed,autoselect
+
+をvimrcに追記しておけば、ヤンクしたときに自動でクリップボードにコピー
+されます。
+
+
+●カーソル移動
+
+$  カーソル行の行末にカーソル移動します。$は、perl等で使われる正規表現
+の行末を表す記号と同じです。
+
+^  空白を除くカーソル行の先頭にカーソル移動します。^は、perl等で使われ
+る正規表現の行頭を表す記号と同じです。
+
+0  カーソル行の先頭にカーソル移動します。
+
+
+●日本語整形
+
+JpFormat.vim-masterを入れる．整形時に改行の代わりに連結マーカ「^」を入
+れるので，改行なのか，整形なのかを区別できる．
+
+ ・gl 現在の行を整形
+ ・gY カーソル位置の分割行をまとめてヤンク
+ ・gJ カーソル位置の分割行をまとめて連結
+ ・gr 連結マーカを削除(改行置き換え)
+ ・J  選択した行を連結（改行削除）
+
+
+●タブ
+
+ set showtabline=2
+
+
+●ウィンドウサイズ，位置
+
+gvimrcファイルを編集する．
+
+ set lines=40
+
+
+●バックアップファイルを作らない
+
+gvim.exeと同じディレクトリにあるvimrcファイルを修正して以下のようにす
+る．
+
+ set nobackup
+ set noswapfile
+
+
+●マークの作成，ジャンプ
+
+ m{a-zA-Z} マークの指定
+ '{a-zA-Z} マークへジャンプ
+
+
+●vimで文字コード変換，改行コード変換
+
+参考：
+ http://pseudo.ddo.jp/~pseudo/cgi-bin/shop_v50/doc/webmaster.html
+ http://advweb.seesaa.net/article/3074705.html
+
+・改行コードの変更
+
+   :++e  fileformat=dos    改行コードをDOSとして読み直す
+   :set  fileformat=unix   UNIXに変換
+   :set  fileformat=dos    DOSに変換
+   :set  fileformat=mac    Macに変換
+
+・文字コードの変更
+
+ :set fileencoding=文字コード
+ :set fenc=文字コード (上のコマンドの短い形式。こちらでも良い。)
+
+ :set fileencoding=euc-jp (エンコーディングEUC-JPに変更。)
+ :set fileencoding=shift_jis (エンコーディングSHIFT_JISに変更。)
+ :set fileencoding=utf-8 (エンコーディングUTF-8に変更。)
+
+
+●設定
+
+gvimは起動時に$HOME参照する．cygwinを導入していてHOMEが指定されている
+場合，cygwinのHOMEの下の_vimrc(.vimrc?)を見に行く．また.vimディレクト
+リはvimfilesという名前にしないといけない．cygwin側のvimと共通化するた
+めにvimfilesにシンボリックリンク.vimを作成しておく．
+
+cygwinがない場合は、vim74-kaoriya-win64が$HOMEになるため、そこの直下に
+vimfilesと_vimrcを置く．
+
+
+●kaoriya版vimのunファイル
+
+参考:
+ http://www.kaoriya.net/blog/2014/03/30/
+
++kaoriya版として配布しているVimでは デフォルトで undofile がオンになっ
+た関係で ファイルの保存時に変な名前のファイルが作成されるようになりま
+した。 
+デフォルトではファイルを保存した時に同時に.{ファイル名}.un~ を undo ファ	
+イルを作成します。この undo ファイルにより Vim は undo の情報をセッショ	
+ンを越えて保持できます。
+
+
+・無効化
+
+ :set noundofile
+
+・一か所にまとめる
+
+ :set undodir=$VIM/undo
+
+
+●msysgit導入
+
+プラグイン管理のためにGitが必要
+→社内からgithubへのアクセス不可？
+
+参考：
+ http://d.hatena.ne.jp/xyk/20130920/1379659991
+ http://d.hatena.ne.jp/xyk/20130930/1380507307
+
+以下からダウンロード
+ https://git-for-windows.github.io/
+
+インストール後config作成
+
+ $ git config --global user.name "Masahiro Yamada"
+ $ git config --global user.email masahiro17.yamada@toshiba.co.jp
+
+
+●設定ファイル優先順位
+
+設定ファイル vimrc は直接いじらず、別途 _vimrc を作ってやるのがよいらしい。
+
+読み込む優先順位は
+
+:version
+
+で確認できる。
+
+   システム vimrc: "$VIM\vimrc"
+     ユーザ vimrc: "$HOME\_vimrc"
+  第2ユーザ vimrc: "$HOME\vimfiles\vimrc"
+  第3ユーザ vimrc: "$VIM\_vimrc"
+      ユーザ exrc: "$HOME\_exrc"
+   第2ユーザ exrc: "$VIM\_exrc"
+  システム gvimrc: "$VIM\gvimrc"
+    ユーザ gvimrc: "$HOME\_gvimrc"
+ 第2ユーザ gvimrc: "$HOME\vimfiles\gvimrc"
+ 第3ユーザ gvimrc: "$VIM\_gvimrc"
+ システムメニュー: "$VIMRUNTIME\menu.vim"
+

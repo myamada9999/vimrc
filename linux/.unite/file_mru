@@ -1,0 +1,24 @@
+0.2.0
+/etc/hosts	1449019911
+/home/myamada/script/chroot_jessie	1449019679
+/home2/myamada/chroot-jessie/etc/apt/sources.list	1449019063
+/home/myamada/script/chroot_skerlet	1449018529
+/etc/passwd	1449018464
+/home/myamada/tmsc-ct-genesis/setup-tmsc-ct.sh	1448959435
+/home/myamada/tmsc-ct-genesis/poky/oe-init-build-env	1448959054
+/home/myamada/tmsc-ct-genesis/poky/meta/conf/machine/qemux86-64.conf	1448959007
+/etc/ssl/certs/ca-certificates.crt	1448957756
+/etc/wgetrc	1448954046
+/etc/ssl/openssl.cnf	1448953896
+/home/myamada/.gitconfig	1448953431
+/etc/apt/sources.list	1448952995
+/home/myamada/tmsc-ct-genesis/skelios.conf	1448952855
+/home/myamada/.bashrc	1448950640
+/etc/resolv.conf	1448946896
+/etc/group	1448944626
+/etc/nsswitch.conf	1426234625
+/home/myamada/sample-application/backtrace.c	1424221044
+/home/myamada/chroot-skerlet/etc/mtab	1422501490
+/lib/udev/write_net_rules	1422345387
+/etc/fstab	1422338731
+/home/myamada/.ssh/id_rsa.pub	1402904563
