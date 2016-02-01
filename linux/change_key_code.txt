@@ -1,0 +1,40 @@
+
+Change key like following because I don't like to move hand 
+for ESC/Zenkaku_Hankaku key in vim.
+
+Henkan   => ESC
+Muhenkan => Zenkaku_Hankaku
+
+
+1. Check keycode, keysym.
+
+ $ xev
+
+Then, put Henkan, Muhenkan, ESC, Han/Zen Kanji.
+You can find keynum and keysym by each key.
+In my environment, keynum and keysym show like below.
+
+ keynum 100
+Hankaku keycode ESC
+
+
+2. Create .xmodmaprc file.
+
+keycode [$KEYNUM] = [$KEYSYM]
+
+Set KEYNUM is keynum for Henkan and Muhenkan.
+Set KEYSYM is keysym for ESC and Zenkaku_Hankaku.
+
+Example: .xmodmaprc
+
+ keycode 100 = Escape
+ keycode 102 = Zenkaku_Hankaku
+
+
+3. Set .xmodmaprc file in .bashrc file.
+
+Example: .bashrc
+
+ xmodmap ~/.xmodmaprc
+
+
