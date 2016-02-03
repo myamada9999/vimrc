@@ -5,6 +5,7 @@
 set autoindent
 set number
 set showmatch
+set matchtime=1
 set background=light
 set shiftwidth=4
 set backspace=indent,eol,start
@@ -15,6 +16,13 @@ set laststatus=2
 set showcmd
 set tabstop=4
 set clipboard=unnamed,autoselect
+
+" yanc until the end of line
+nnoremap Y y$
+
+" increment and decrement
+nnoremap + <C-a>
+nnoremap - <C-x>
 
 " 「日本語入力固定モード」の動作モード
 let IM_CtrlMode = 4
