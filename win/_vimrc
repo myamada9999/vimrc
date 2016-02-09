@@ -15,6 +15,7 @@ set scrolloff=999
 set laststatus=2
 set showcmd
 set tabstop=4
+set expandtab
 set clipboard=unnamed,autoselect
 
 " yanc until the end of line

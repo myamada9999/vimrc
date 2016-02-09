@@ -12,6 +12,7 @@ set scrolloff=999
 set laststatus=2
 set showcmd
 set tabstop=4
+set expandtab
 " yanc until 1000 lines
 " set viminfo='20,<1000,s10,h
 set viminfo='50,<1000,s100
