@@ -136,9 +136,9 @@ let g:neocomplcache_snippets_dir = '~/.vim/snippets'
 imap { {}<Left>
 imap [ []<Left>
 imap ( ()<Left>
-"imap " ""<Left>
-"imap ' ''<Left>
-"imap ` ``<Left>
+imap "" ""<Left>
+imap '' ''<Left>
+imap `` ``<Left>
 imap < <><Left>
 imap // /  /<left><left><left>
 imap /* /*  */<left><left><left>
