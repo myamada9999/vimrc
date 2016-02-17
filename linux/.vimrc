@@ -131,22 +131,26 @@ imap <C-k>     <Plug>(neocomplcache_snippets_expand)
 smap <C-k>     <Plug>(neocomplcache_snippets_expand)
 let g:neocomplcache_snippets_dir = '~/.vim/snippets'
 
+" カーソルを自動的に()の中へ
+imap { {}<Left>
+imap [ []<Left>
+imap ( ()<Left>
+imap " ""<Left>
+imap ' ''<Left>
+imap ` ``<Left>
+imap < <><Left>
+imap // /  /<left><left><left>
+imap /* /*  */<left><left><left>
 
 "
 " vim-smater
 "
-"inoremap <expr> = smartchr#loop(' = ', '  == ', '=')
-"inoremap <expr> , smartchr#loop(', ', ',')
-"inoremap <expr> { smartchr#loop('{}', '{')
-"inoremap <expr> ( smartchr#loop('();', '()', '(')
-"inoremap <expr> [ smartchr#loop('[]', '[')
-"inoremap <expr> " smartchr#loop('""', '"')
-"inoremap <expr> ` smartchr#loop('``', '')
+inoremap <expr> = smartchr#loop(' = ', '  == ', '=')
+inoremap <expr> , smartchr#loop(', ', ',')
 
 "
 " unite.vim
 "
-
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
