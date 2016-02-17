@@ -3,7 +3,6 @@ set number
 set showmatch
 set matchtime=1
 set background=light
-set shiftwidth=4
 set backspace=indent,eol,start
 syntax on
 ""set tags=~/*/tags
@@ -11,8 +10,10 @@ set tags=~/linux-kernel/timer-shield-kernel/tags
 set scrolloff=999
 set laststatus=2
 set showcmd
-set tabstop=4
+set smarttab
 set expandtab
+set tabstop=4
+set shiftwidth=4
 " yanc until 1000 lines
 " set viminfo='20,<1000,s10,h
 set viminfo='50,<1000,s100
