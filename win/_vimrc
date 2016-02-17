@@ -7,15 +7,16 @@ set number
 set showmatch
 set matchtime=1
 set background=light
-set shiftwidth=4
 set backspace=indent,eol,start
 syntax on
 set tags=./tags
 set scrolloff=999
 set laststatus=2
+set smarttab
 set showcmd
-set tabstop=4
 set expandtab
+set tabstop=4
+set shiftwidth=4
 set clipboard=unnamed,autoselect
 
 " yanc until the end of line
