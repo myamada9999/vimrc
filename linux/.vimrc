@@ -92,15 +92,15 @@ function! GetStatusEx()
 endfunction
 
 
-" 
+"
 " vim-pathogen
-" 
+"
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-" 
+"
 " neocomplcache.vim
-" 
+"
 let g:acp_enableAtStartup = 0
 " Use neocomplcache.
 let g:neocomplcache_enable_at_startup = 1
@@ -166,7 +166,7 @@ au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
 
-" Set paste mode automatically, 
+" Set paste mode automatically,
 " please refer http://qiita.com/ryoff/items/ad34584e41425362453e for details.
 if &term =~ "xterm"
     let &t_ti .= "\e[?2004h"
@@ -232,3 +232,6 @@ map <silent> <C-p> :tabprevious<CR>
 
 " insert \ at the end of each lines.
 vnoremap nn :normal $a \<CR>
+
+" Remove all space at the end of all lines automatically.
+autocmd BufWritePre * :%s/\s\+$//ge
