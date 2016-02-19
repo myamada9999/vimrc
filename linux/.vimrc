@@ -229,3 +229,6 @@ map <silent> <C-x> :tabclose<CR>
 map <silent> <C-n> :tabnext<CR>
 " tp 前のタブ
 map <silent> <C-p> :tabprevious<CR>
+
+" insert \ at the end of each lines.
+vnoremap nn :normal $a \<CR>
