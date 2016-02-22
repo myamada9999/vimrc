@@ -136,12 +136,12 @@ let g:neocomplcache_snippets_dir = '~/.vim/snippets'
 imap { {}<Left>
 imap [ []<Left>
 imap ( ()<Left>
-imap "" ""<Left>
-imap '' ''<Left>
-imap `` ``<Left>
 imap < <><Left>
 imap // /  /<left><left><left>
 imap /* /*  */<left><left><left>
+imap "" ""<Left>
+imap '' ''<Left>
+imap ** ``<Left>
 
 "
 " vim-smater
@@ -230,8 +230,12 @@ map <silent> <C-n> :tabnext<CR>
 " tp 前のタブ
 map <silent> <C-p> :tabprevious<CR>
 
-" insert \ at the end of each lines.
+" insert/reomve \ at the end of each lines.
 vnoremap nn :normal $a \<CR>
+vnoremap rnn :s/\s\+\\$//ge<CR>
+" insert/reomve \\ at the end of each lines.
+vnoremap nnn :normal $a \\<CR>
+vnoremap rnnn :s/\s\+\\\\$//ge<CR>
 
 " Remove all space at the end of all lines automatically.
 autocmd BufWritePre * :%s/\s\+$//ge
