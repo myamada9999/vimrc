@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/f6053910/script'
+let g:netrw_dirhist_2='/home/f6053910/toppers/asp/asp_1_3_2_skyeye/asp/target/at91skyeye_gcc'
+let g:netrw_dirhist_3='/home/f6053910/.vim'
+let g:netrw_dirhist_4='/home/f6053910/script'
+let g:netrw_dirhist_5='/home/f6053910/HouNbu/201112-from-HouNbu/pf/initrd/8270/initrd/flash1'
+let g:netrw_dirhist_6='/home/f6053910/.vim'
