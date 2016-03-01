@@ -236,6 +236,8 @@ vnoremap rnn :s/\s\+\\$//ge<CR>
 " insert/reomve \\ at the end of each lines.
 vnoremap nnn :normal $a \\<CR>
 vnoremap rnnn :s/\s\+\\\\$//ge<CR>
+" remove spaces from the first of line to next word.
+nnoremap rsp 0<C-v>Whd<CR>
 
 " Remove all space at the end of all lines automatically.
 autocmd BufWritePre * :%s/\s\+$//ge
