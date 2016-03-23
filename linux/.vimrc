@@ -241,3 +241,9 @@ nnoremap rsp 0<C-v>Whd<CR>
 
 " Remove all space at the end of all lines automatically.
 autocmd BufWritePre * :%s/\s\+$//ge
+
+" color setting for vimdiff
+hi DiffAdd    ctermfg = black ctermbg = 2
+hi DiffChange ctermfg = black ctermbg = 3
+hi DiffDelete ctermfg = black ctermbg = 6
+hi DiffText   ctermfg = black ctermbg = 7
