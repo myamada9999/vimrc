@@ -18,7 +18,8 @@ set shiftwidth=4
 " set viminfo='20,<1000,s10,h
 set viminfo='50,<1000,s100
 colorscheme darkblue
-set clipboard=unnamed,autoselect
+" set clipboard=unnamed,autoselect
+set clipboard=unnamedplus
 
 " yanc until the end of line
 nnoremap Y y$
